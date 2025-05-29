@@ -1,81 +1,139 @@
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* Fonte base */
 body {
+  margin: 0;
   font-family: 'Roboto', sans-serif;
-  background: #f5f7fa;
+  background-color: #fff9f9;
   color: #333;
   line-height: 1.6;
 }
 
+/* Container principal */
 .container {
   max-width: 900px;
-  margin: 40px auto;
-  padding: 0 20px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
+/* Cabeçalho */
 header {
   text-align: center;
   margin-bottom: 40px;
 }
 
+header h1 {
+  font-size: 2.5em;
+  color: #e91e63;
+}
+
+.destaque {
+  color: #d81b60;
+}
+
 .subtitulo {
+  font-size: 1.2em;
   color: #666;
-  font-weight: 400;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
-#sobre-mim {
-  margin-bottom: 40px;
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+/* Seções */
+section {
+  margin-bottom: 50px;
 }
 
-#habilidades {
-  margin-bottom: 40px;
+section h2 {
+  font-size: 1.8em;
+  color: #d81b60;
+  margin-bottom: 15px;
 }
 
+/* Lista de habilidades */
 .lista-habilidades {
   list-style: none;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
-  padding: 0;
+  gap: 12px;
 }
 
 .lista-habilidades li {
-  background: #007acc;
-  color: #fff;
+  background-color: #fce4ec;
+  color: #880e4f;
   padding: 8px 15px;
   border-radius: 20px;
-  font-weight: 500;
+  font-weight: bold;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.05);
 }
 
-#projetos {
-  margin-bottom: 40px;
-}
-
+/* Cards de projeto */
 .cards-projetos {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
 
+.card {
+  background-color: #fff;
+  border: 1px solid #f8bbd0;
+  border-radius: 12px;
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #c2185b;
+}
+
+.botoes {
+  margin-top: 15px;
+}
+
+/* Botões */
+a.btn, a.btn-outline {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 8px 15px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+a.btn {
+  background-color: #ec407a;
+  color: white;
+}
+
+a.btn:hover {
+  background-color: #d81b60;
+}
+
+a.btn-outline {
+  border: 2px solid #ec407a;
+  color: #ec407a;
+}
+
+a.btn-outline:hover {
+  background-color: #fce4ec;
+}
+
+/* Rodapé */
 footer {
   text-align: center;
-  padding: 20px 0;
-  border-top: 1px solid #ddd;
-  font-size: 14px;
+  margin-top: 40px;
+  font-size: 0.9em;
+  color: #888;
 }
 
 footer a {
-  color: #007acc;
+  color: #ec407a;
   text-decoration: none;
 }
 
@@ -86,63 +144,11 @@ footer a:hover {
 /* Responsividade */
 @media (max-width: 600px) {
   .lista-habilidades {
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .cards-projetos {
     flex-direction: column;
   }
-  .card {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  flex: 1 1 250px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.card h3 {
-  margin-bottom: 10px;
-  color: #333;
-}
-
-.card p {
-  flex-grow: 1;
-  margin-bottom: 15px;
-  color: #555;
-}
-
-.btn, .btn-outline {
-  display: inline-block;
-  text-align: center;
-  padding: 8px 12px;
-  margin-right: 10px;
-  margin-top: 10px;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-  transition: all 0.3s ease-in-out;
-}
-
-.btn {
-  background-color: #007acc;
-  color: white;
-}
-
-.btn:hover {
-  background-color: #005f99;
-}
-
-.btn-outline {
-  border: 2px solid #007acc;
-  color: #007acc;
-}
-
-.btn-outline:hover {
-  background-color: #007acc;
-  color: white;
-}
-
 }
