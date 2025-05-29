@@ -5,53 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portfólio - Bárbara Abelha</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="container">
-
     <header>
-      <h1>Olá, eu sou <span class="destaque">Bárbara!</span></h1>
-      <p class="subtitulo">Desenvolvedora Front-End | Apaixonada por criar soluções web</p>
+      <h1>Olá, eu sou <span class="destaque">Bárbara Abelha</span> 👩‍💻</h1>
+      <p class="subtitulo">Desenvolvedora Front-End focada em criar soluções web modernas e responsivas.</p>
     </header>
 
     <section id="sobre-mim">
-      <h2>👩 Sobre Mim</h2>
-      <p>Sou uma desenvolvedora web focada em criar interfaces limpas, modernas e responsivas. Busco aprender e crescer cada dia mais com projetos reais.</p>
+      <h2>Sobre Mim</h2>
+      <p>Sou uma desenvolvedora web apaixonada por transformar ideias em interfaces funcionais. Estou sempre em busca de novos desafios e aprendizado constante.</p>
     </section>
 
     <section id="habilidades">
-      <h2>🛠️ Habilidades</h2>
+      <h2>Habilidades</h2>
       <ul class="lista-habilidades">
-        <li>HTML5</li>
-        <li>CSS3</li>
-        <li>JavaScript</li>
-        <li>React</li>
-        <li>Git & GitHub</li>
-        <li>Python</li>
+        <li><i class="fas fa-code"></i> HTML5</li>
+        <li><i class="fab fa-css3-alt"></i> CSS3</li>
+        <li><i class="fab fa-js"></i> JavaScript</li>
+        <li><i class="fab fa-react"></i> React</li>
+        <li><i class="fab fa-git-alt"></i> Git & GitHub</li>
+        <li><i class="fab fa-python"></i> Python</li>
       </ul>
     </section>
 
     <section id="projetos">
-      <h2>📁 Projetos</h2>
+      <h2>Projetos</h2>
       <div class="cards-projetos">
         <div class="card">
           <h3>🍰 Receitas Deliciosas</h3>
           <p>Site simples e responsivo de receitas com HTML e CSS.</p>
-          <div class="botoes">
-            <a href="https://abelha09.github.io/site-receitas/" target="_blank" class="btn">Ver Projeto</a>
-            <a href="https://github.com/Abelha09/site-receitas" target="_blank" class="btn-outline">Ver Código</a>
-          </div>
+          <a href="https://abelha09.github.io/site-receitas/" target="_blank" class="btn">🔗 Ver Projeto</a>
+          <a href="https://github.com/Abelha09/site-receitas" target="_blank" class="btn-outline">💻 Ver Código</a>
         </div>
       </div>
     </section>
 
     <footer>
-      <p>📬 Contato: <a href="mailto:barbara.abelha.ufrj@gmail.com">barbara.abelha.ufrj@gmail.com</a> | 
-        <a href="https://github.com/Abelha09" target="_blank">GitHub</a>
-      </p>
+      <p>Contato: <a href="mailto:barbara.abelha.ufrj@gmail.com">barbara.abelha.ufrj@gmail.com</a> |
+      <a href="https://github.com/Abelha09" target="_blank">GitHub</a></p>
     </footer>
-
   </div>
+
+  <script>
+    // Scroll suave
+    document.querySelectorAll('a[href^=\"#\"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Animações de entrada
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    });
+
+    document.querySelectorAll('section, .card').forEach(el => {
+      el.classList.add('hidden');
+      observer.observe(el);
+    });
+  </script>
 </body>
 </html>
