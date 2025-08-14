@@ -1,44 +1,35 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* Reset básico */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-family: 'Montserrat', sans-serif;
   background: linear-gradient(135deg, #e3f2fd, #fce4ec);
   color: #2c3e50;
   line-height: 1.6;
+  min-height: 100dvh;
 }
 
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 2rem;
-}
+.container { max-width: 1100px; margin: auto; padding: 2rem; }
 
-header {
-  text-align: center;
-  margin-bottom: 3rem;
-  animation: fadeInDown 1s ease;
-}
+header { text-align: center; margin-bottom: 3rem; animation: fadeInDown 0.8s ease; }
 
-h1 {
-  font-size: 2.8rem;
-  color: #34495e;
-}
+h1 { font-size: 2.8rem; color: #34495e; }
 
+/* Fallback de cor + gradiente quando suportado */
 .destaque {
-  background: linear-gradient(45deg, #2c98f0, #6a11cb);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #2c98f0; /* fallback */
   font-weight: 800;
 }
-
-.subtitulo {
-  font-size: 1.2rem;
-  color: #546e7a;
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .destaque {
+    background: linear-gradient(45deg, #2c98f0, #6a11cb);
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
+
+.subtitulo { font-size: 1.2rem; color: #546e7a; }
 
 h2 {
   font-size: 1.9rem;
@@ -46,15 +37,13 @@ h2 {
   color: #2c3e50;
   position: relative;
 }
-
 h2::after {
   content: "";
-  width: 60px;
+  width: 64px;
   height: 4px;
   background: linear-gradient(45deg, #2c98f0, #6a11cb);
   position: absolute;
-  bottom: -8px;
-  left: 0;
+  bottom: -10px; left: 0;
   border-radius: 2px;
 }
 
@@ -65,120 +54,129 @@ h2::after {
   list-style: none;
   padding: 0;
 }
-
 .lista-habilidades li {
-  background: white;
+  background: #ffffff;
   padding: 1rem;
-  border-radius: 10px;
+  border-radius: 12px;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   border: 2px solid transparent;
-  background-clip: padding-box;
 }
-
 .lista-habilidades li:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-  border: 2px solid #2c98f0;
+  transform: translateY(-6px);
+  box-shadow: 0 10px 18px rgba(0,0,0,0.12);
+  border-color: #2c98f0;
 }
 
-/* Cards com gradiente e hover moderno */
+/* Grid dos projetos */
 .cards-projetos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
 
+/* Card com aura/gradiente sutil e sem bloquear cliques */
 .card {
-  background: white;
+  background: #ffffff;
   padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  border: 2px solid transparent;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  border: 1px solid rgba(44, 152, 240, 0.15);
   position: relative;
   overflow: hidden;
+  isolation: isolate; /* cria contexto de empilhamento */
 }
-
 .card::before {
   content: "";
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
+  inset: -120% -120% auto auto;
+  width: 240%;
+  height: 240%;
   background: conic-gradient(from 180deg, #2c98f0, #6a11cb, #2c98f0);
-  animation: rotate 8s linear infinite;
-  z-index: 0;
-  opacity: 0.1;
+  opacity: 0.08;
+  animation: rotate 10s linear infinite;
+  z-index: -1;
+  pointer-events: none; /* não bloqueia os cliques */
 }
-
 .card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.14);
 }
 
-.card h3, .card p, .card a {
-  position: relative;
-  z-index: 1;
-}
+/* Tipografia e espaçamento interno do card */
+.card h3 { margin-bottom: 0.5rem; }
+.card p  { margin-bottom: 0.75rem; color: #5f6b75; }
 
+/* Botões */
 .btn, .btn-outline {
   display: inline-block;
-  margin-top: 1rem;
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
+  margin-top: 0.6rem;
+  padding: 0.65rem 1.2rem;
+  border-radius: 10px;
   text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s ease;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease, color 0.3s ease;
+  outline: none;
+}
+.btn:focus-visible, .btn-outline:focus-visible {
+  box-shadow: 0 0 0 3px rgba(44,152,240,0.35);
 }
 
 .btn {
   background: linear-gradient(45deg, #2c98f0, #6a11cb);
-  color: white;
-  box-shadow: 0 4px 10px rgba(108, 99, 255, 0.3);
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(108,99,255,0.28);
 }
-
-.btn:hover {
-  filter: brightness(1.1);
-  box-shadow: 0 6px 14px rgba(108, 99, 255, 0.4);
-}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
 
 .btn-outline {
   border: 2px solid #2c98f0;
   color: #2c98f0;
+  background: transparent;
 }
-
 .btn-outline:hover {
   background: #2c98f0;
-  color: white;
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(44,152,240,0.25);
 }
 
 footer {
   margin-top: 4rem;
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: #7f8c8d;
 }
 
-/* Animações */
+/* Animações de entrada */
 .hidden {
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s ease-out;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-
 .show {
   opacity: 1;
   transform: translateY(0);
 }
 
-@keyframes rotate {
-  100% { transform: rotate(360deg); }
+/* Reduz animações se o usuário preferir */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
 }
 
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Dark mode opcional (automático por preferência do sistema) */
+@media (prefers-color-scheme: dark) {
+  body { background: linear-gradient(135deg, #101622, #1b0f1a); color: #e7edf3; }
+  .subtitulo { color: #b6c0c8; }
+  .lista-habilidades li { background: #121826; border-color: rgba(44,152,240,0.18); }
+  .card { background: #0f1422; border-color: rgba(44,152,240,0.18); box-shadow: 0 6px 16px rgba(0,0,0,0.5); }
+  .card p { color: #c7d0da; }
+  .btn-outline { color: #9bccff; border-color: #2c98f0; }
+  footer { color: #a3b0bc; }
 }
+
+/* Keyframes */
+@keyframes rotate { 100% { transform: rotate(360deg); } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
